@@ -1,0 +1,26 @@
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem;
+    border-radius: 8px;
+    background-color: #333;
+    width: 100%;
+    margin: .5rem;
+    border: 2px solid yellow;
+}
+
+.category{
+    margin: .5rem;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    color: yellow;
+}
+
+.cart {
+    display: flex;
+    align-items: center;
+}

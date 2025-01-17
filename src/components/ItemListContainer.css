@@ -1,0 +1,11 @@
+.item-list-container {
+    width: calc(100% - 2rem); /* Deja espacio a los lados */
+    margin: 1rem auto; /* Margen superior e inferior */
+    padding: 2rem; /* Espaciado interno */
+    background-color: #1c1c1c; /* Fondo oscuro para contraste */
+    color: white;
+    border: 2px solid yellow; /* Borde amarillo */
+    border-radius: 1rem; /* Bordes redondeados */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    text-align: center; /* Centrar el texto */
+  }
