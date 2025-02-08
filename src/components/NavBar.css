@@ -1,26 +1,49 @@
-nav{
+.navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; 
     align-items: center;
-    padding: .5rem;
-    border-radius: 8px;
+    padding: 0.5rem 1rem;
     background-color: #333;
     width: 100%;
-    margin: .5rem;
-    border: 2px solid yellow;
-}
-
-.category{
-    margin: .5rem;
-}
-
-.brand-logo {
+    position: sticky; 
+    top: 0;
+    z-index: 10;
+  }
+  
+  .navbar-brand {
     display: flex;
     align-items: center;
+    gap: 0.5rem;
     color: yellow;
-}
-
-.cart {
+    font-size: 1.5rem;
+  }
+  
+  .navbar-buttons {
     display: flex;
     align-items: center;
-}
+    gap: 1.5rem; 
+  }
+
+  .navbar-buttons button {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: #1a1a1a;
+    color: white;
+    cursor: pointer;
+    transition: border-color 0.25s, background-color 0.25s;
+  }
+  
+  .navbar-buttons button:hover {
+    border-color: yellow;
+    background-color: #444;
+  }
+  
+
+  .cart-widget img {
+    height: 1.5rem;
+    cursor: pointer;
+  }
+  
