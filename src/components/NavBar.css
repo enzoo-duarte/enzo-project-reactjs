@@ -10,12 +10,18 @@
     z-index: 10;
   }
   
-  .navbar-brand {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: yellow;
-    font-size: 1.5rem;
+  .navbar-brand button {
+    background: none; 
+    border: none; 
+    font-size: 1.5rem; 
+    font-weight: bold; 
+    color: rgb(255 159 1); 
+    cursor: pointer; 
+    text-transform: uppercase; 
+  }
+
+  .navbar-brand button:hover {
+    text-decoration: underline; 
   }
   
   .navbar-buttons {
@@ -37,8 +43,7 @@
   }
   
   .navbar-buttons button:hover {
-    border-color: yellow;
-    background-color: #444;
+    border-color: #6132d0;
   }
   
 

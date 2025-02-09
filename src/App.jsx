@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <NavBar />
-      <ItemListContainer greeting="Bienvenidos a mi e-Commerce" />
+      <ItemListContainer greeting="Bienvenidos a Nexus Second Hand" />
     </>
   );
 }

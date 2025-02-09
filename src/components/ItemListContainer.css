@@ -4,8 +4,29 @@
   padding: 2rem;
   background-color: #1c1c1c;
   color: white;
-  border: 2px solid yellow;
+  border: 2px solid #8367c6;
   border-radius: 1rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
+}
+
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: .75rem; 
+  justify-content: center;
+  padding: 1rem;
+}
+
+
+@media (max-width: 768px) {
+  .product-list {
+    grid-template-columns: repeat(2, 1fr); 
+  }
+}
+
+@media (max-width: 480px) {
+  .product-list {
+    grid-template-columns: 1fr; 
+  }
 }
