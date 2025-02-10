@@ -1,14 +1,20 @@
 import { useState, useEffect } from 'react';
+import { getProducts, getCategory } from '../asyncMock'; 
+import ProductCard from './ProductCard';
+import { useParams } from 'react-router-dom'; 
 import './ItemListContainer.css';
-import { getProducts } from '../asyncMock'; 
-import ProductCard from './ProductCard'; 
 
 export default function ItemListContainer({ greeting }) {
-  const [products, setProducts] = useState(null); 
+  const [products, setProducts] = useState(null);
+  const { catId } = useParams(); 
 
   useEffect(() => {
-    getProducts().then((response) => setProducts(response));
-  }, []);
+    if (!catId) {
+      getProducts().then((response) => setProducts(response));
+    } else {
+      getCategory(catId).then((response) => setProducts(response));
+    }
+  }, [catId]); 
 
   return (
     <section className="item-list-container">
