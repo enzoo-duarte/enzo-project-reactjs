@@ -1,3 +1,5 @@
+import './NavBar.css';
+
 export default function CartWidget() {
     return (
       <div className="cart-widget">
@@ -6,6 +8,7 @@ export default function CartWidget() {
           alt="Cart"
           className="cart-icon"
         />
+        <span className="cart-counter">3</span>
       </div>
     );
   }
