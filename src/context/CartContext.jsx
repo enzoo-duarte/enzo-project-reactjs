@@ -6,12 +6,24 @@ export function CartProvider({ children }) {
     const [cart, setCart] = useState([]);
 
     const addToCart = (product) => {
-    setCart([...cart, product]);
-};
+        setCart((prevCart) => {
+            const existingProduct = prevCart.find((item) => item.id === product.id);
 
-return (
-    <CartContext.Provider value={{ cart, addToCart }}>
-        {children}
-    </CartContext.Provider>
-);
+            if (existingProduct) {
+                return prevCart.map((item) =>
+                    item.id === product.id
+                        ? { ...item, quantity: item.quantity + product.quantity }
+                        : item
+                );
+            } else {
+                return [...prevCart, product];
+            }
+        });
+    };
+
+    return (
+        <CartContext.Provider value={{ cart, addToCart }}>
+            {children}
+        </CartContext.Provider>
+    );
 }

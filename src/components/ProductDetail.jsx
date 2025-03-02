@@ -1,21 +1,23 @@
-import { useState, useEffect, useContext } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getProductById } from '../asyncMock';
-import { CartContext } from '../context/CartContext'; 
+import { CartContext } from '../context/CartContext';
+import ItemCount from './ItemCount';
 import './ProductDetail.css';
 
-export default function ProductDetail() {
+export default function ProductDetail() { 
   const { id } = useParams();
   const [product, setProduct] = useState(null);
-  const { addToCart } = useContext(CartContext); 
+  const [quantity, setQuantity] = useState(1);
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
-    getProductById(id).then((response) => setProduct(response));
+    getProductById(id).then(setProduct);
   }, [id]);
 
   const handleClick = () => {
     if (product) {
-      addToCart(product);
+      addToCart({ ...product, quantity });
     }
   };
 
@@ -35,9 +37,13 @@ export default function ProductDetail() {
             <div className="product-detail-info">
               <h1>{product.title}</h1>
               <h2>${product.price}</h2>
+
               <button className="buy-button" onClick={handleClick}>
                 COMPRAR
               </button>
+
+              <ItemCount stock={5} initial={1} onQuantityChange={setQuantity} />
+
               <p className="product-description">{product.description}</p>
             </div>
           </div>

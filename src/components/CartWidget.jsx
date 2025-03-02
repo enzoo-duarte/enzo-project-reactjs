@@ -5,6 +5,8 @@ import './NavBar.css';
 export default function CartWidget() {
   const { cart } = useContext(CartContext); 
 
+  const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
+
   return (
     <div className="cart-widget">
       <img
@@ -12,7 +14,7 @@ export default function CartWidget() {
         alt="Cart"
         className="cart-icon"
       />
-      <span className="cart-counter">{cart.length}</span>
+      <span className="cart-counter">{totalItems}</span>
     </div>
   );
 }
