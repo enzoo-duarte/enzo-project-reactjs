@@ -1,15 +1,23 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { getProductById } from '../asyncMock';
+import { CartContext } from '../context/CartContext'; 
 import './ProductDetail.css';
 
 export default function ProductDetail() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
+  const { addToCart } = useContext(CartContext); 
 
   useEffect(() => {
     getProductById(id).then((response) => setProduct(response));
   }, [id]);
+
+  const handleClick = () => {
+    if (product) {
+      addToCart(product);
+    }
+  };
 
   return (
     <section className="product-detail">
@@ -27,7 +35,9 @@ export default function ProductDetail() {
             <div className="product-detail-info">
               <h1>{product.title}</h1>
               <h2>${product.price}</h2>
-              <button className="buy-button">COMPRAR</button>
+              <button className="buy-button" onClick={handleClick}>
+                COMPRAR
+              </button>
               <p className="product-description">{product.description}</p>
             </div>
           </div>
