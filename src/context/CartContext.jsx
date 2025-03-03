@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { toast } from "react-toastify";
 
 export const CartContext = createContext();
 
@@ -13,17 +14,39 @@ export function CartProvider({ children }) {
                 const newQuantity = existingProduct.quantity + product.quantity;
                 
                 if (newQuantity > 5) {
-                    alert("PRODUCTO SIN STOCK");
-                    return prevCart; 
+                    toast.error("Producto sin stock", {
+                        position: "top-right",
+                        autoClose: 2000,
+                        theme: "dark",
+                    });
+                    return prevCart;
                 }
 
-                return prevCart.map((item) =>
+                const updatedCart = prevCart.map((item) =>
                     item.id === product.id
                         ? { ...item, quantity: newQuantity }
                         : item
                 );
+
+                toast.success(`${product.title} x${product.quantity} agregado al carrito`, {
+                    position: "top-right",
+                    autoClose: 2000,
+                    theme: "dark",
+                });
+
+                return updatedCart;
             } else {
-                return product.quantity <= 5 ? [...prevCart, product] : prevCart;
+                if (product.quantity > 5) return prevCart;
+                
+                const newCart = [...prevCart, product];
+
+                toast.success(`${product.title} x${product.quantity} agregado al carrito`, {
+                    position: "top-right",
+                    autoClose: 2000,
+                    theme: "dark",
+                });
+
+                return newCart;
             }
         });
     };
