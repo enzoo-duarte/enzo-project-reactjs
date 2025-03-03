@@ -1,5 +1,6 @@
 import { useEffect, useContext, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import ReactLoading from 'react-loading';
 import { getProductById } from '../asyncMock';
 import { CartContext } from '../context/CartContext';
 import ItemCount from './ItemCount';
@@ -51,7 +52,9 @@ export default function ProductDetail() {
           </div>
         </>
       ) : (
-        <p>Cargando producto...</p>
+        <div className="loader-container">
+          <ReactLoading type="bubbles" color="#ff9f01" width="100px" height="50px" />
+        </div>
       )}
     </section>
   );

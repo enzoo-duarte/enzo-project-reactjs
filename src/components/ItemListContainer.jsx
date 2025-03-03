@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'; 
+import ReactLoading from 'react-loading';
 import './ItemListContainer.css';
 import { getProducts, getCategory } from '../asyncMock'; 
 import ProductCard from './ProductCard';
@@ -19,15 +20,19 @@ export default function ItemListContainer() {
   return (
     <section className="item-list-container">
       <h1>{catId ? `${catId.charAt(0).toUpperCase() + catId.slice(1)}` : 'Todos los productos'}</h1>
-      <div className="product-list">
-        {products ? (
-          products.map((product) => (
+
+      {products ? (
+        <div className="product-list">
+          {products.map((product) => (
             <ProductCard key={product.id} product={product} />
-          ))
-        ) : (
-          <p>Cargando productos...</p>
-        )}
-      </div>
+          ))}
+        </div>
+      ) : (
+        <div className="loader-container">
+          <ReactLoading type="bubbles" color="#ff9f01" width="100px" height="50px" />
+        </div>
+      )}
+      
     </section>
   );
 }

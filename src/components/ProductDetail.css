@@ -107,3 +107,9 @@ h2 {
   color: #f5f5f5;
 }
 
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px; /* Ajusta la altura según necesites */
+}

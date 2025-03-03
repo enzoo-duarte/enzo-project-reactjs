@@ -28,3 +28,10 @@
     grid-template-columns: 1fr; 
   }
 }
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+}
