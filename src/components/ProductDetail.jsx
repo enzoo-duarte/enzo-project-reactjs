@@ -1,7 +1,7 @@
 import { useEffect, useContext, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ReactLoading from 'react-loading';
-import { getProductById } from '../asyncMock';
+import { getProductById } from '../firebase/firebase'; 
 import { CartContext } from '../context/CartContext';
 import ItemCount from './ItemCount';
 import './ProductDetail.css';
@@ -13,7 +13,9 @@ export default function ProductDetail() {
   const { cart, addToCart } = useContext(CartContext);
 
   useEffect(() => {
-    getProductById(id).then(setProduct);
+    getProductById(id)
+      .then(setProduct)
+      .catch(error => console.error("Error obteniendo el producto:", error));
   }, [id]);
 
   const productInCart = cart.find(item => item.id === id);

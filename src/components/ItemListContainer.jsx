@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'; 
 import ReactLoading from 'react-loading';
 import './ItemListContainer.css';
-import { getProducts, getCategory } from '../asyncMock'; 
+import { getItems } from '../firebase/firebase'; // ✅ Importamos Firestore en lugar de asyncMock.js
 import ProductCard from './ProductCard';
 
 export default function ItemListContainer() {
@@ -10,11 +10,18 @@ export default function ItemListContainer() {
   const { catId } = useParams(); 
 
   useEffect(() => {
-    if (!catId) {
-      getProducts().then((response) => setProducts(response));
-    } else {
-      getCategory(catId).then((response) => setProducts(response));
+    async function fetchProducts() {
+      const allProducts = await getItems();
+
+      // ✅ Si hay una categoría en la URL, filtramos los productos
+      if (catId) {
+        setProducts(allProducts.filter(product => product.category === catId));
+      } else {
+        setProducts(allProducts);
+      }
     }
+
+    fetchProducts();
   }, [catId]);
 
   return (
