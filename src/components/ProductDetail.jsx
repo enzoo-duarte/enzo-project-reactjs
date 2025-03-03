@@ -9,14 +9,18 @@ export default function ProductDetail() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
-  const { addToCart } = useContext(CartContext);
+  const { cart, addToCart } = useContext(CartContext);
 
   useEffect(() => {
     getProductById(id).then(setProduct);
   }, [id]);
 
+  const productInCart = cart.find(item => item.id === id);
+  const availableStock = product ? 5 - (productInCart?.quantity || 0) : 5;
+  const isOutOfStock = availableStock <= 0;
+
   const handleClick = () => {
-    if (product) {
+    if (product && !isOutOfStock) {
       addToCart({ ...product, quantity });
     }
   };
@@ -29,20 +33,18 @@ export default function ProductDetail() {
             &larr; Volver al listado
           </button>
           <div className="product-detail-content">
-            <img
-              className="product-detail-image"
-              src={product.image}
-              alt={product.title}
-            />
+            <div className="image-container">
+              <img className="product-detail-image" src={product.image} alt={product.title} />
+            </div>
             <div className="product-detail-info">
               <h1>{product.title}</h1>
               <h2>${product.price}</h2>
 
-              <button className="buy-button" onClick={handleClick}>
-                COMPRAR
+              <button className="buy-button" onClick={handleClick} disabled={isOutOfStock}>
+                {isOutOfStock ? "SIN STOCK" : "COMPRAR"}
               </button>
 
-              <ItemCount stock={5} initial={1} onQuantityChange={setQuantity} />
+              {!isOutOfStock && <ItemCount stock={availableStock} initial={1} onQuantityChange={setQuantity} />}
 
               <p className="product-description">{product.description}</p>
             </div>

@@ -10,13 +10,20 @@ export function CartProvider({ children }) {
             const existingProduct = prevCart.find((item) => item.id === product.id);
 
             if (existingProduct) {
+                const newQuantity = existingProduct.quantity + product.quantity;
+                
+                if (newQuantity > 5) {
+                    alert("PRODUCTO SIN STOCK");
+                    return prevCart; 
+                }
+
                 return prevCart.map((item) =>
                     item.id === product.id
-                        ? { ...item, quantity: item.quantity + product.quantity }
+                        ? { ...item, quantity: newQuantity }
                         : item
                 );
             } else {
-                return [...prevCart, product];
+                return product.quantity <= 5 ? [...prevCart, product] : prevCart;
             }
         });
     };
