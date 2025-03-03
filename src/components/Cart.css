@@ -106,6 +106,6 @@
     transition: color 0.3s ease;
 }
 
-.cart-back-button:hover {
+.cart-back-button:hover{
     color: #ff9f01; 
 }
