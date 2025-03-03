@@ -38,7 +38,7 @@ export default function ProductDetail() {
             </div>
             <div className="product-detail-info">
               <h1>{product.title}</h1>
-              <h2>${product.price}</h2>
+              <h2>${product.price} USD</h2>
 
               <button className="buy-button" onClick={handleClick} disabled={isOutOfStock}>
                 {isOutOfStock ? "SIN STOCK" : "COMPRAR"}

@@ -2,7 +2,7 @@ const products = [
     {
         id: '1',
         title: 'Camiseta Pulau',
-        price: '35 USD',
+        price: 35,  
         category: 'indumentaria',
         description: 'Camiseta Pulau gris con estampado amarillo',
         image: '/img/camiseta.png',
@@ -10,7 +10,7 @@ const products = [
     {
         id: '2',
         title: 'Zapatillas Adidas',
-        price: '95 USD',
+        price: 95,
         category: 'calzado',
         description: 'Zapatillas Adidas casuales rojas con franjas blancas',
         image: '/img/zapatillas.png',
@@ -18,7 +18,7 @@ const products = [
     {
         id: '3',
         title: 'Gorra Stance',
-        price: '25 USD',
+        price: 25,
         category: 'accesorios',
         description: 'Gorra Stance marrón de visera con bordado en blanco',
         image: '/img/gorra.png',
@@ -26,7 +26,7 @@ const products = [
     {
         id: '4',
         title: 'Campera Volcom',
-        price: '85 USD',
+        price: 85,
         category: 'indumentaria',
         description: 'Campera rompeviento Volcom anaranjada y verde con capucha',
         image: '/img/campera.png',
@@ -34,7 +34,7 @@ const products = [
     {
         id: '5',
         title: 'Buzo Vans',
-        price: '60 USD',
+        price: 60,
         category: 'indumentaria',
         description: 'Buzo Vans gris con branding',
         image: '/img/buzo.png',
@@ -42,7 +42,7 @@ const products = [
     {
         id: '6',
         title: 'Ojotas Adidas',
-        price: '50 USD',
+        price: 50,
         category: 'calzado',
         description: 'Ojotas Adidas grises con branding en su parte inferior',
         image: '/img/ojotas.png',
@@ -50,7 +50,7 @@ const products = [
     {
         id: '7',
         title: 'Riñonera Volcom',
-        price: '30 USD',
+        price: 30,
         category: 'accesorios',
         description: 'Riñonera Volcom beige con diseños en blanco',
         image: '/img/rinonera.png',
@@ -58,7 +58,7 @@ const products = [
     {
         id: '8',
         title: 'Sombrero Vans',
-        price: '35 USD',
+        price: 35,
         category: 'accesorios',
         description: 'Sombrero bucket Vans negro con branding',
         image: '/img/sombrero.png',
@@ -66,7 +66,7 @@ const products = [
     {
         id: '9',
         title: 'Botas UGG',
-        price: '120 USD',
+        price: 120,
         category: 'calzado',
         description: 'Botas chelsea UGG de abrigo en gamuza marrón',
         image: '/img/botas.png',
@@ -75,24 +75,24 @@ const products = [
 
 export const getProducts = () => {
     return new Promise((resolve) => {
-    setTimeout(() => {
-        resolve(products);
-    }, 2000);
-});
+        setTimeout(() => {
+            resolve(products);
+        }, 2000);
+    });
 };
 
 export const getCategory = (category) => {
     return new Promise((resolve) => {
-    setTimeout(() => {
-        resolve(products.filter((product) => product.category === category));
-    }, 2000);
+        setTimeout(() => {
+            resolve(products.filter((product) => product.category === category));
+        }, 2000);
     });
 };
 
 export const getProductById = (id) => {
     return new Promise((resolve) => {
-    setTimeout(() => {
-        resolve(products.find((product) => product.id === id));
-    }, 2000);
+        setTimeout(() => {
+            resolve(products.find((product) => product.id === id));
+        }, 2000);
     });
 };

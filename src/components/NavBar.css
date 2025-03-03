@@ -8,6 +8,7 @@
   position: sticky; 
   top: 0;
   z-index: 10;
+  box-shadow: 0 2px 5px #000000;
 }
 
 .navbar-brand button {
@@ -29,6 +30,7 @@
   display: flex;
   align-items: center;
   gap: 1.5rem; 
+  
 }
 
 .navbar-buttons button {
@@ -41,6 +43,7 @@
   color: #f5f5f5; 
   cursor: pointer;
   transition: border-color 0.3s;
+  
 }
 
 .navbar-buttons button:hover {
@@ -49,7 +52,6 @@
 
 .cart-widget img {
   height: 1.5rem;
-  cursor: pointer;
 }
 
 .cart-counter {
