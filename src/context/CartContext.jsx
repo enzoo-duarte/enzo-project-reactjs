@@ -57,12 +57,21 @@ export function CartProvider({ children }) {
         }, 0);
     };
 
+    const removeFromCart = (productId) => {
+        setCart((prevCart) => prevCart.filter(item => item.id !== productId));
+        toast.success("Producto eliminado del carrito", {
+            position: "top-right",
+            autoClose: 2000,
+            theme: "dark",
+        });
+    };
+
     const clearCart = () => {
         setCart([]);
     };
 
     return (
-        <CartContext.Provider value={{ cart, addToCart, clearCart }}>
+        <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart }}>
             {children}
         </CartContext.Provider>
     );

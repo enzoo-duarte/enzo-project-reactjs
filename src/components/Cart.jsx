@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import "./Cart.css";
 
 export default function Cart() {
-    const { cart, clearCart } = useContext(CartContext);
+    const { cart, clearCart, removeFromCart } = useContext(CartContext);
 
     const totalPrice = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
@@ -25,6 +25,10 @@ export default function Cart() {
                 Swal.fire("¡Aquí no hay nada!", "Todos los productos fueron eliminados", "success");
             }
         });
+    };
+
+    const handleRemoveItem = (id) => {
+        removeFromCart(id);
     };
 
     return (
@@ -57,7 +61,7 @@ export default function Cart() {
                                 <small>Subtotal</small>
                                 <p>${Math.round(item.price * item.quantity)} USD</p>
                             </div>
-                            <button className="cart-item-remove">🗑️</button>
+                            <button className="cart-item-remove" onClick={() => handleRemoveItem(item.id)}>🗑️</button>
                         </div>
                     ))}
                 </div>
