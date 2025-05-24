@@ -13,12 +13,3 @@ React-Loading para loaders en las pantallas de carga
 
 ✅ Los productos se obtienen directamente desde Firebase Firestore así que no se usan archivos locales
 ✅ Se pueden filtrar los productos por categoría
-
-
-----
-
-Estuve mucho tiempo tratando de hacer funcionar la generación de las órdenes de compra pero lamentablemente es creo que lo único que no pude implementar como deseaba, el botón de "FINALIZAR COMPRA" dirigiría a una nueva UI que sería el Checkout.jsx, donde planeaba presentar el ¡Gracias por tu compra! con el número de orden debajo, he dado lo mejor que pude en este proyecto siendo estos tiempos ajetreados, trabajo nuevo como business application support, aprendiendo muchas cosas, ahora un viaje de una semana y para antes de abril nos mudamos! :O
-
-Gracias por la vocación para enseñar y por permitirme aprender tantas cosas geniales de este mundo, sé que me van a ser muuy útiles para todo lo que se viene!
-
-Abrazo grande!!
